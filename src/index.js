@@ -1,14 +1,43 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 import './style.css';
 
-function component() {
-    const element = document.createElement('div');
-  
-    // Lodash, now imported by this script
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-    element.classList.add('hello');
-    
-    return element;
+const todoArr = [
+  {
+    id: 1,
+    disc: 'wash dishes',
+    completed: 'false',
+  },
+  {
+    id: 2,
+    disc: 'meeting friends',
+    completed: 'false',
+  },
+  {
+    id: 3,
+    disc: 'Watching Movie',
+    completed: 'false',
+  },
+  {
+    id: 4,
+    disc: 'Playing Game',
+    completed: 'false',
+  },
+];
+
+const todoList = document.querySelector('.todo-list');
+function todoFunc() {
+  todoList.innerHTML += '';
+  for (let i = 0; i < todoArr.length; i += 1) {
+    todoList.innerHTML += `
+        <li>
+        <input type="checkbox" id="todo-${i}" name="todo-${i}" value="">
+        <label for="todo-${i}"> ${todoArr[i].disc}</label>
+        </li>`;
   }
-  
-  document.body.appendChild(component());
+}
+
+function component() {
+  return todoFunc();
+}
+
+document.body.appendChild(component());
