@@ -30,14 +30,13 @@ function todoFunc() {
   for (let i = 0; i < todoArr.length; i += 1) {
     todoList.innerHTML += `
         <li>
-        <input type="checkbox" id="todo-${i}" name="todo-${i}" value="">
-        <label for="todo-${i}"> ${todoArr[i].disc}</label>
+        <div><input type="checkbox" id="todo-${i}" name="todo-${i}" value="">
+        <label for="todo-${i}"> ${todoArr[i].disc}</label></div>
+        <i class='fas fa-ellipsis-v'></i>
         </li>`;
   }
 }
 
-function component() {
-  return todoFunc();
-}
-
-document.body.appendChild(component());
+window.onload = () => {
+  todoFunc();
+};

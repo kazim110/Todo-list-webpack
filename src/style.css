@@ -37,10 +37,21 @@ h1 {
 .todo-list li {
   padding: 15px;
   border-bottom: 1px #cecece solid;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.todo-list div {
+  display: flex;
 }
 
 .all-clear-btn {
   padding: 15px;
   border: none;
   color: #5a5a5a;
+}
+
+.todo-list img {
+  width: 30px;
 }
