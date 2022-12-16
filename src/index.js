@@ -1,42 +1,16 @@
 // import _ from 'lodash';
 import './style.css';
+import LoadTodos from './modules/LoadTodos.js';
+import AddTodos from './modules/Add.js';
 
-const todoArr = [
-  {
-    id: 1,
-    disc: 'wash dishes',
-    completed: 'false',
-  },
-  {
-    id: 2,
-    disc: 'meeting friends',
-    completed: 'false',
-  },
-  {
-    id: 3,
-    disc: 'Watching Movie',
-    completed: 'false',
-  },
-  {
-    id: 4,
-    disc: 'Playing Game',
-    completed: 'false',
-  },
-];
-
-const todoList = document.querySelector('.todo-list');
-function todoFunc() {
-  todoList.innerHTML += '';
-  for (let i = 0; i < todoArr.length; i += 1) {
-    todoList.innerHTML += `
-        <li>
-        <div><input type="checkbox" id="todo-${i}" name="todo-${i}" value="">
-        <label for="todo-${i}"> ${todoArr[i].disc}</label></div>
-        <i class='fas fa-ellipsis-v'></i>
-        </li>`;
-  }
-}
+const todoInput = document.getElementById('todo-input-id');
 
 window.onload = () => {
-  todoFunc();
+  LoadTodos.todoFunc();
 };
+
+todoInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    AddTodos.addTodo();
+  }
+});

@@ -52,6 +52,14 @@ h1 {
   color: #5a5a5a;
 }
 
-.todo-list img {
-  width: 30px;
+.todo-menu i {
+  margin: 5px;
+}
+
+.show {
+  display: flex;
+}
+
+.hide {
+  display: none;
 }
