@@ -1,6 +1,6 @@
 // import _ from 'lodash';
 import './style.css';
-import LoadTodos, { loadedTodos, storageKey } from './modules/LoadTodos.js';
+import LoadTodos from './modules/LoadTodos.js';
 import AddTodos from './modules/Add.js';
 import CheckboxAction from './modules/Checkbox.js';
 
