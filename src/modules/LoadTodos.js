@@ -1,6 +1,7 @@
 /* eslint-disable */
 import DeleteTodo from './Remove.js';
 import Todo from './Todo.js';
+import CheckboxAction from './Checkbox.js';
 
 export const storageKey = 'todoLocalData';
 export const loadedTodos = JSON.parse(localStorage.getItem(storageKey)) || [];
@@ -75,7 +76,7 @@ export default class LoadTodos {
     for (let a = 0; a < loadedTodos.length; a += 1) {
       editInput[a].addEventListener('keypress', (e) => {
         if (editInput[a].value && e.key === 'Enter') {
-          const todo = new Todo(editInput[a].value, false);
+          const todo = new Todo(a+1,editInput[a].value, false);
           loadedTodos[a] = todo;
           localStorage.setItem(storageKey, JSON.stringify(loadedTodos));
           LoadTodos.todoFunc();
@@ -84,6 +85,22 @@ export default class LoadTodos {
           checkBox[a].classList.replace('hide', 'show');
           checkboxLabel[a].classList.replace('hide', 'show');
         }
+      });
+    }
+
+    const checkboxInput = document.querySelectorAll('.checkbox');
+    const checkLabel = document.querySelectorAll('.checkbox-label');
+    
+    for(let a = 0; a<loadedTodos.length;a +=1){
+      checkboxInput[a].addEventListener('change', () => {
+        if (checkboxInput[a].checked) {
+          checkLabel[a].classList.add('line-over');
+          CheckboxAction.checkboxAction(a,true);
+        }else {
+          checkLabel[a].classList.remove('line-over');
+          CheckboxAction.checkboxAction(a,false);
+        }
+        
       });
     }
   }

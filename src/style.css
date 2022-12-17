@@ -63,3 +63,8 @@ h1 {
 .hide {
   display: none;
 }
+
+.line-over {
+  text-decoration: line-through;
+  color: #5a5a5a;
+}
