@@ -4,30 +4,35 @@ import Todo from './Todo.js';
 import CheckboxAction from './Checkbox.js';
 
 export const storageKey = 'todoLocalData';
-export const loadedTodos = JSON.parse(localStorage.getItem(storageKey)) || [];
+export const loadedTodos = JSON.parse(localStorage.getItem(storageKey)) || null;
 
 const todoList = document.querySelector('.todo-list');
 
 export default class LoadTodos {
   static todoFunc() {
     todoList.innerHTML = '';
-    for (let i = 0; i < loadedTodos.length; i += 1) {
-      todoList.innerHTML += `
-              <li>
-              <div>
-              <input class="edite-input hide" type="text" id="edit-input-id" name="edit">
-              <input class="checkbox show" type="checkbox" id="todo-${i}" name="todo-${i}" value="">
-              <label class="checkbox-label show" for="todo-${i}"> ${loadedTodos[i].disc}</label>
-              </div>
-              <div class="todo-menu">
-              <i class='fas fa-ellipsis-v three-dot show'></i>
-              
-              <i class="fa fa-wrench edite hide" aria-hidden="true"></i>
-              <i class="fa fa-trash trash hide" aria-hidden="true"></i>
-              <i class="fa fa-times close hide" aria-hidden="true"></i>
-              </div>
-              </li>`;
+    if(loadedTodos !== null){
+      for (let i = 0; i < loadedTodos.length; i += 1) {
+        todoList.innerHTML += `
+                <li>
+                <div>
+                <input class="edite-input hide" type="text" id="edit-input-id" name="edit">
+                <input class="checkbox show" type="checkbox" id="todo-${i}" name="todo-${i}" value="">
+                <label class="checkbox-label show" for="todo-${i}"> ${loadedTodos[i].disc}</label>
+                </div>
+                <div class="todo-menu">
+                <i class='fa fa-ellipsis-v three-dot show'></i>
+                <i class="fa fa-wrench edite hide" aria-hidden="true"></i>
+                <i class="fa fa-trash trash hide" aria-hidden="true"></i>
+                <i class="fa fa-times close hide" aria-hidden="true"></i>
+                </div>
+                </li>`;
+      }
+    }else{
+      const todo1 = new Todo(1,'Reading Books',false);
+      localStorage.setItem(storageKey, JSON.stringify(todo1));
     }
+   
     const checkBox = document.querySelectorAll('.checkbox');
     const checkboxLabel = document.querySelectorAll('.checkbox-label');
     const editInput = document.querySelectorAll('.edite-input');
