@@ -44,44 +44,54 @@ export default class LoadTodos {
     const todoClose = document.querySelectorAll('.close');
     const todoEdite = document.querySelectorAll('.edite');
     const todoTrash = document.querySelectorAll('.trash');
-    for (let a = 0; a < loadedTodos.length; a += 1) {
-      todomenu[a].addEventListener('click', () => {
-        todomenu[a].classList.replace('show', 'hide');
-        todoClose[a].classList.replace('hide', 'show');
-        todoEdite[a].classList.replace('hide', 'show');
-        todoTrash[a].classList.replace('hide', 'show');
-      });
+    if(loadedTodos!==null){
+      for (let a = 0; a < loadedTodos.length; a += 1) {
+        todomenu[a].addEventListener('click', () => {
+          todomenu[a].classList.replace('show', 'hide');
+          todoClose[a].classList.replace('hide', 'show');
+          todoEdite[a].classList.replace('hide', 'show');
+          todoTrash[a].classList.replace('hide', 'show');
+        });
+      }
     }
 
-    for (let a = 0; a < loadedTodos.length; a += 1) {
-      todoClose[a].addEventListener('click', () => {
-        todomenu[a].classList.replace('hide', 'show');
-        todoClose[a].classList.replace('show', 'hide');
-        todoEdite[a].classList.replace('show', 'hide');
-        todoTrash[a].classList.replace('show', 'hide');
-        checkBox[a].classList.replace('hide', 'show');
-        checkboxLabel[a].classList.replace('hide', 'show');
-        editInput[a].classList.replace('show', 'hide');
-      });
+    if(loadedTodos!==null){
+      for (let a = 0; a < loadedTodos.length; a += 1) {
+        todoClose[a].addEventListener('click', () => {
+          todomenu[a].classList.replace('hide', 'show');
+          todoClose[a].classList.replace('show', 'hide');
+          todoEdite[a].classList.replace('show', 'hide');
+          todoTrash[a].classList.replace('show', 'hide');
+          checkBox[a].classList.replace('hide', 'show');
+          checkboxLabel[a].classList.replace('hide', 'show');
+          editInput[a].classList.replace('show', 'hide');
+        });
+      }
     }
-    for (let a = 0; a < loadedTodos.length; a += 1) {
-      todoTrash[a].addEventListener('click', () => {
-        DeleteTodo.deleteTodo(a);
-      });
-    }
-
-    for (let a = 0; a < loadedTodos.length; a += 1) {
-      todoEdite[a].addEventListener('click', () => {
-        todoEdite[a].classList.replace('show', 'hide');
-        todoTrash[a].classList.replace('show', 'hide');
-        checkBox[a].classList.replace('show', 'hide');
-        checkboxLabel[a].classList.replace('show', 'hide');
-        editInput[a].classList.replace('hide', 'show');
-
-        editInput[a].value = loadedTodos[a].disc;
-      });
+    
+    if(loadedTodos!==null){
+      for (let a = 0; a < loadedTodos.length; a += 1) {
+        todoTrash[a].addEventListener('click', () => {
+          DeleteTodo.deleteTodo(a);
+        });
+      }
     }
 
+    if(loadedTodos!==null){
+      for (let a = 0; a < loadedTodos.length; a += 1) {
+        todoEdite[a].addEventListener('click', () => {
+          todoEdite[a].classList.replace('show', 'hide');
+          todoTrash[a].classList.replace('show', 'hide');
+          checkBox[a].classList.replace('show', 'hide');
+          checkboxLabel[a].classList.replace('show', 'hide');
+          editInput[a].classList.replace('hide', 'show');
+  
+          editInput[a].value = loadedTodos[a].disc;
+        });
+      }
+    }
+
+   if(loadedTodos!==null){
     for (let a = 0; a < loadedTodos.length; a += 1) {
       editInput[a].addEventListener('keypress', (e) => {
         if (editInput[a].value && e.key === 'Enter') {
@@ -96,21 +106,24 @@ export default class LoadTodos {
         }
       });
     }
+   }
 
     const checkboxInput = document.querySelectorAll('.checkbox');
     const checkLabel = document.querySelectorAll('.checkbox-label');
     
-    for(let a = 0; a<loadedTodos.length;a +=1){
-      checkboxInput[a].addEventListener('change', () => {
-        if (checkboxInput[a].checked) {
-          checkLabel[a].classList.add('line-over');
-          CheckboxAction.checkboxAction(a,true);
-        }else {
-          checkLabel[a].classList.remove('line-over');
-          CheckboxAction.checkboxAction(a,false);
-        }
-        
-      });
+    if(loadedTodos!==null){
+      for(let a = 0; a<loadedTodos.length;a +=1){
+        checkboxInput[a].addEventListener('change', () => {
+          if (checkboxInput[a].checked) {
+            checkLabel[a].classList.add('line-over');
+            CheckboxAction.checkboxAction(a,true);
+          }else {
+            checkLabel[a].classList.remove('line-over');
+            CheckboxAction.checkboxAction(a,false);
+          }
+          
+        });
+      }
     }
   }
 }
