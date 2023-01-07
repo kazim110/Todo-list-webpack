@@ -5,16 +5,15 @@ import CheckboxAction from './Checkbox.js';
 
 export const storageKey = 'todoLocalData';
 export const loadedTodos = JSON.parse(localStorage.getItem(storageKey)) || null;
-localStorage.setItem(storageKey, JSON.stringify(loadedTodos));
 
 const todoList = document.querySelector('.todo-list');
 
 export default class LoadTodos {
   static todoFunc() {
-    let data = JSON.parse(localStorage.getItem(storageKey)) || null;
+    // let data = JSON.parse(localStorage.getItem(storageKey)) || null;
 
     todoList.innerHTML = '';
-    console.log(data, 'this is data')
+    console.log(loadedTodos, 'this is data');
     if(loadedTodos !== null){
       for (let i = 0; i < loadedTodos.length; i += 1) {
         todoList.innerHTML += `
