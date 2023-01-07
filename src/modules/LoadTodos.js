@@ -5,6 +5,7 @@ import CheckboxAction from './Checkbox.js';
 
 export const storageKey = 'todoLocalData';
 export const loadedTodos = JSON.parse(localStorage.getItem(storageKey)) || null;
+localStorage.setItem(storageKey, JSON.stringify(loadedTodos));
 
 const todoList = document.querySelector('.todo-list');
 
